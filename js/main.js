@@ -30,22 +30,22 @@ function onClickGenerate(){
 
     //TODO MODEL
     //Сгенерировать расу
-    let human = '<img src="/images/human.jpg" vspace="1px" hspace="1px" align="center" style="height: 20px; width: 20px; "/>';
-    let elf = '<img src="/images/elf.png" vspace="1px" hspace="1px" align="center" style="height: 20px; width: 20px; "/>';
-    let orc = '<img src="/images/orc.png" vspace="1px" hspace="1px" align="center" style="height: 20px; width: 20px; "/>';
-    let dragon = '<img src="/images/dragon.jpg" vspace="1px" hspace="1px" align="center" style="height: 20px; width: 20px; "/>';
-    let dwarf = '<img src="/images/dwarf.png" vspace="1px" hspace="1px" align="center" style="height: 20px; width: 20px; "/>';
-    let undead = '<img src="/images/undead.jpg" vspace="1px" hspace="1px" align="center" style="height: 20px; width: 20px; "/>';
-    let troll = '<img src="/images/troll.png" vspace="1px" hspace="1px" align="center" style="height: 20px; width: 20px; "/>';
-    let nightElf = '<img src="/images/nightelf.jpg" vspace="1px" hspace="1px" align="center" style="height: 20px; width: 20px; "/>';
-    let draenei = '<img src="/images/draenei.jpg" vspace="1px" hspace="1px" align="center" style="height: 20px; width: 20px; "/>';
-    let worgen = '<img src="/images/worgen.png" vspace="1px" hspace="1px" align="center" style="height: 20px; width: 20px; "/>';
-    let pandaren = '<img src="/images/pandaren.png" vspace="1px" hspace="1px" align="center" style="height: 20px; width: 20px; "/>';
-    let tauren = '<img src="/images/tauren.jpg" vspace="1px" hspace="1px" align="center" style="height: 20px; width: 20px; "/>';
-    let bloodElf = '<img src="/images/bloodelf.jpg" vspace="1px" hspace="1px" align="center" style="height: 20px; width: 20px; "/>';
-    let goblin = '<img src="/images/goblin.jpg" vspace="1px" hspace="1px" align="center" style="height: 20px; width: 20px; "/>';
+    let human = '/images/human.jpg';
+    let elf = '/images/elf.png';
+    let orc = '/images/orc.png';
+    let dragon = '/images/dragon.jpg';
+    let dwarf = '/images/dwarf.png';
+    let undead = '/images/undead.jpg';
+    let troll = '/images/troll.png';
+    let nightElf = '/images/nightelf.jpg';
+    let draenei = '/images/draenei.jpg';
+    let worgen = '/images/worgen.png';
+    let pandaren = '/images/pandaren.png';
+    let tauren = '/images/tauren.jpg';
+    let bloodElf = '/images/bloodelf.jpg';
+    let goblin = '/images/goblin.jpg';
     const iconR = [human, elf, orc, dragon, dwarf, undead, troll, nightElf, draenei, worgen, pandaren, tauren, bloodElf, goblin];
-    user.iconR = iconR[random(0, races.length - 1)];
+    user.iconR = iconR[random(0, iconR.length - 1)];
     const races = ['Human', 'Elven', 'Orc', 'Dragon', 'Dwarf', 'Undead', 'Troll', 'Night Elf',
         'Draenei', 'Worgen', 'Pandaren', 'Tauren', 'Blood Elf', 'Goblin'];
     user.race = races[random(0, races.length - 1)];
@@ -53,7 +53,7 @@ function onClickGenerate(){
     //TODO MODEL
     //Сгенерировать класс
     const iconC = [];
-    user.iconC = iconC[random(0, races.length - 1)];
+    user.iconC = iconC[random(0, iconC.length - 1)];
     const classes = ['Warrior', 'Mage', 'Warlock', 'Knight', 'Druid', 'Monk', 'Prophet', 'Hunter',
         'Rogue', 'Paladin', 'Shaman', 'Priest', 'Death Knight', 'Demon Hunter'];
     user.clas = classes[random(0, classes.length - 1)];
@@ -75,7 +75,7 @@ function onClickDeleteAll(){
 }
 
 //TODO VIEW
-function renderUser({ name, ava, hp, mp, race, clas, lvl, uid, iconR, iconC }){
+function renderUser({ name, ava, hp, mp, race, clas, lvl, uid, iconR }){
     const delClass = `btn-del-${ uid }`;
 
     const heroHtml = `
@@ -91,12 +91,12 @@ function renderUser({ name, ava, hp, mp, race, clas, lvl, uid, iconR, iconC }){
         <div class="card-body">
             <h5 class="card-title">${ name }</h5>
             
-            <p class="card-text"><span>${ iconR }</span>  ${ race }</p>
+            <p class="card-text"><img src="${ iconR }" class="card-img-left" alt="race icon">  ${ race }</p>
             <div class="float-right">
                 <span style="background-color: #eeffcd; color: purple; border-color: #f34c8a; 
                 border-radius: 10px;" class="card-text p-2">LVL ${lvl}</span>
             </div>
-            <p class="card-text"><span>${ iconC }</span>  ${ clas }</p>
+            <p class="card-text"> ${ clas }</p>
             <div>
                 <button type="button" class="btn btn-warning ${ delClass }" data-uid="${ uid }">Delete</button>
             </div>
