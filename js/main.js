@@ -30,6 +30,7 @@ function onClickGenerate(){
 
     //TODO MODEL
     //Сгенерировать расу
+    const icon = '<iframe onload="showMath()" width="15" height="15" src="html.html"></iframe>';
     const races = ['Human', 'Elven', 'Orc', 'Dragon', 'Dwarf', 'Undead', 'Troll', 'Night Elf',
         'Draenei', 'Worgen', 'Pandaren', 'Tauren', 'Blood Elf', 'Goblin'];
     user.race = races[random(0, races.length - 1)];
@@ -57,7 +58,7 @@ function onClickDeleteAll(){
 }
 
 //TODO VIEW
-function renderUser({ name, ava, hp, mp, race, clas, lvl, uid }){
+function renderUser({ name, ava, hp, mp, race, clas, lvl, uid, icon }){
     const delClass = `btn-del-${ uid }`;
 
     const heroHtml = `
@@ -73,12 +74,12 @@ function renderUser({ name, ava, hp, mp, race, clas, lvl, uid }){
         <div class="card-body">
             <h5 class="card-title">${ name }</h5>
             
-            <p class="card-text">${ race }</p>
+            <p class="card-text">${ icon }  ${ race }</p>
             <div class="float-right">
                 <span style="background-color: #eeffcd; color: purple; border-color: #f34c8a; 
                 border-radius: 10px;" class="card-text p-2">LVL ${lvl}</span>
             </div>
-            <p class="card-text">${ clas }</p>
+            <p class="card-text">${ icon }  ${ clas }</p>
             <div>
                 <button type="button" class="btn btn-warning ${ delClass }" data-uid="${ uid }">Delete</button>
             </div>
@@ -89,6 +90,23 @@ function renderUser({ name, ava, hp, mp, race, clas, lvl, uid }){
     document.querySelector('#hero-container').insertAdjacentHTML('afterbegin', heroHtml);
 
     document.querySelector(`.${ delClass }`).addEventListener('click', deleteUser);
+}
+function show(){
+    document.body.insertAdjacentHTML('beforeend', '<div id="cont">'+'<div></div>'.repeat(100)+'</div>');
+    const sq = [...document.querySelectorAll('#cont>div')].sort(() => Math.random() - Math.random());
+    const opt ={
+        sq
+    };
+    opt.colorInterval = setInterval(col, 1, opt);
+
+}
+function col({sq, colorInterval}) {
+    console.log(sq);
+    if (sq.length == 1) {
+        clearInterval(colorInterval);
+    }
+    const el = sq.pop();
+    el.style.backgroundColor = '#' + Math.random().toString(16).slice(2, 8);
 }
 
 //TODO CONTROLLER

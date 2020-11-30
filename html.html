@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<style>
+    #cont{
+        width: 10px;
+        height: 10px;
+        position: fixed;
+    }
+    #cont > div{
+        float: left;
+        width: 2px;
+        height: 2px;
+    }
+</style>
+</head>
+<body>
+<script>
+
+    function show(){
+        document.body.insertAdjacentHTML('beforebegin', '<div id="cont">'+'<div></div>'.repeat(45)+'</div>');
+        const sq = [...document.querySelectorAll('#cont>div')].sort(() => Math.random() - Math.random());
+        const opt ={
+            sq
+        };
+        opt.colorInterval = setInterval(col, 1, opt);
+
+    }
+    function col({sq, colorInterval}) {
+        console.log(sq);
+        if (sq.length == 1) {
+            document.getElementById('task1').innerHTML = 'completed';
+            clearInterval(colorInterval);
+        }
+        const el = sq.pop();
+        el.style.backgroundColor = '#' + Math.random().toString(16).slice(2, 8);
+    }
+
+    show();
+
+</script>
+</body>
+
+</html>
