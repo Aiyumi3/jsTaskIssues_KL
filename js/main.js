@@ -30,30 +30,18 @@ function onClickGenerate(){
 
     //TODO MODEL
     //Сгенерировать расу
-    let human = '/images/human.jpg';
-    let elf = '/images/elf.png';
-    let orc = '/images/orc.png';
-    let dragon = '/images/dragon.jpg';
-    let dwarf = '/images/dwarf.png';
-    let undead = '/images/undead.jpg';
-    let troll = '/images/troll.png';
-    let nightElf = '/images/nightelf.jpg';
-    let draenei = '/images/draenei.jpg';
-    let worgen = '/images/worgen.png';
-    let pandaren = '/images/pandaren.png';
-    let tauren = '/images/tauren.jpg';
-    let bloodElf = '/images/bloodelf.jpg';
-    let goblin = '/images/goblin.jpg';
-    const iconR = [human, elf, orc, dragon, dwarf, undead, troll, nightElf, draenei, worgen, pandaren, tauren, bloodElf, goblin];
-    user.iconR = iconR[random(0, iconR.length - 1)];
+    const iconShape = '<svg height=30 width="30" style="background-color: floralwhite; margin-left: 10px; ' +
+        'box-shadow: 1px 1px  2px 2px mediumpurple; border-radius: 3px; " id="svg"> ' +
+        '<circle id="circ" r="15" cx="15" cy="10" style="fill: ; stroke: darkgray; stroke-width: 2px" /> </svg>';
+    user.iconShape.style.fill = '#' + Math.random().toString(16).slice(2, 8);
+    //const iconR = [human, elf, orc, dragon, dwarf, undead, troll, nightElf, draenei, worgen, pandaren, tauren, bloodElf, goblin];
+
     const races = ['Human', 'Elven', 'Orc', 'Dragon', 'Dwarf', 'Undead', 'Troll', 'Night Elf',
         'Draenei', 'Worgen', 'Pandaren', 'Tauren', 'Blood Elf', 'Goblin'];
     user.race = races[random(0, races.length - 1)];
 
     //TODO MODEL
     //Сгенерировать класс
-    const iconC = [];
-    user.iconC = iconC[random(0, iconC.length - 1)];
     const classes = ['Warrior', 'Mage', 'Warlock', 'Knight', 'Druid', 'Monk', 'Prophet', 'Hunter',
         'Rogue', 'Paladin', 'Shaman', 'Priest', 'Death Knight', 'Demon Hunter'];
     user.clas = classes[random(0, classes.length - 1)];
@@ -75,30 +63,30 @@ function onClickDeleteAll(){
 }
 
 //TODO VIEW
-function renderUser({ name, ava, hp, mp, race, clas, lvl, uid, iconR }){
-    const delClass = `btn-del-${ uid }`;
+function renderUser({ name, ava, hp, mp, race, clas, lvl, uid, iconShape }) {
+    const delClass = `btn-del-${uid}`;
 
     const heroHtml = `
     <div class="col mb-4">
     <div class="card h-100">
         <div class="progress">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: ${ hp }%" aria-valuenow="${ hp }" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-danger" role="progressbar" style="width: ${hp}%" aria-valuenow="${hp}" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         <div class="progress">
-            <div class="progress-bar bg-info" role="progressbar" style="width: ${ mp }%" aria-valuenow="${ mp }" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-info" role="progressbar" style="width: ${mp}%" aria-valuenow="${mp}" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
-        <img src="${ ava }" class="card-img-top" alt="hero avatar">
+        <img src="${ava}" class="card-img-top" alt="hero avatar">
         <div class="card-body">
-            <h5 class="card-title">${ name }</h5>
-            
-            <p class="card-text"><img src="${ iconR }" class="card-img-left" alt="race icon">  ${ race }</p>
+            <h5 class="card-title">${name}</h5>
+           
+            <p class="card-text"><span> ${iconShape} </span> ${race}</p>
             <div class="float-right">
                 <span style="background-color: #eeffcd; color: purple; border-color: #f34c8a; 
                 border-radius: 10px;" class="card-text p-2">LVL ${lvl}</span>
             </div>
-            <p class="card-text"> ${ clas }</p>
+            <p class="card-text"><span> ${iconShape} </span> ${clas}</p>
             <div>
-                <button type="button" class="btn btn-warning ${ delClass }" data-uid="${ uid }">Delete</button>
+                <button type="button" class="btn btn-warning ${delClass}" data-uid="${uid}">Delete</button>
             </div>
         </div>
     </div>
@@ -106,27 +94,8 @@ function renderUser({ name, ava, hp, mp, race, clas, lvl, uid, iconR }){
 
     document.querySelector('#hero-container').insertAdjacentHTML('afterbegin', heroHtml);
 
-    document.querySelector(`.${ delClass }`).addEventListener('click', deleteUser);
-}
-function show(){
-    document.body.insertAdjacentHTML('beforeend', '<div id="cont">'+'<div></div>'.repeat(100)+'</div>');
-    const sq = [...document.querySelectorAll('#cont>div')].sort(() => Math.random() - Math.random());
-    const opt ={
-        sq
-    };
-    opt.colorInterval = setInterval(col, 1, opt);
-
-}
-function col({sq, colorInterval}) {
-    console.log(sq);
-    if (sq.length == 1) {
-        clearInterval(colorInterval);
-    }
-    const el = sq.pop();
-    el.style.backgroundColor = '#' + Math.random().toString(16).slice(2, 8);
-}
-
-//TODO CONTROLLER
+    document.querySelector(`.${delClass}`).addEventListener('click', deleteUser);
+}//TODO CONTROLLER
 function deleteUser({ target }){
     const uidF = target.dataset.uid;
 
