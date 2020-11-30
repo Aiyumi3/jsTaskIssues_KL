@@ -30,11 +30,57 @@ function onClickGenerate(){
 
     //TODO MODEL
     //Сгенерировать расу
-    //const iconR = [human, elf, orc, dragon, dwarf, undead, troll, nightElf, draenei, worgen, pandaren, tauren, bloodElf, goblin];
+
+    let human = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRoOJ3wiMGoC1y2NQPkKRCKFcyMD1qrK0n7g&usqp=CAU';
+    let elf = 'https://i.etsystatic.com/9879972/r/il/494959/1531730199/il_570xN.1531730199_8ero.jpg';
+    let orc = 'https://cdn.dribbble.com/users/2043038/screenshots/4708721/orc.png';
+    let dragon = 'https://media.istockphoto.com/vectors/dragon-icon-with-fire-symbol-vector-id1191986285?b=1&k=6&m=1191986285&s=612x612&w=0&h=XGvPRd8BjmkRgv4eQUFq4tHNoMYReL9tm8qEf7nUoxA=';
+    let dwarf = 'https://www.creativefabrica.com/wp-content/uploads/2019/04/Garden-gnome-line-art-drawing-4-580x386.jpg';
+    let undead = 'https://i.pinimg.com/originals/74/e2/21/74e22176c7c930ce2518bb2e45cebc31.jpg';
+    let troll = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdGHuvLLMoqvCKo0XzHVRoxlxR_205AkAOSA&usqp=CAU';
+    let nightElf = 'https://i.pinimg.com/originals/8b/eb/97/8beb977853c4819b27c1e33c3e45c7ca.jpg';
+    let draenei = 'https://lh3.googleusercontent.com/proxy/tmXkMMuYCH3zgsfhp8wQxX3ifk0fFu1xr8Eoa0Tfp_BdNq8OJJ_kCapgMZBwU482pSb9a8XjxJvLv9NFfxMlGl7Zxv8_Mdg664ITCiDtYhxy1eV2XiUzu_4pLFR0Te9x6RtV1pP3ARvJcTrKNh6IAKUzvcPotYWR3JPZfSM';
+    let worgen = 'https://disciplinaryaction.files.wordpress.com/2012/04/icon_wooden_worgen.png';
+    let pandaren = 'https://mir-s3-cdn-cf.behance.net/projects/404/e147ee91583457.Y3JvcCw5MDcsNzEwLDYwLDA.png';
+    let tauren = 'https://www.kindpng.com/picc/m/28-289775_wow-tauren-symbol-hd-png-download.png';
+    let bloodElf = 'https://i.pinimg.com/originals/7c/37/bf/7c37bf2f28aefca6e5335da6d1a933fe.jpg';
+    let goblin = 'https://icon-library.com/images/goblin-icon/goblin-icon-6.jpg';
+
+    const iconR = [human, elf, orc, dragon, dwarf, undead, troll, nightElf, draenei, worgen, pandaren, tauren, bloodElf, goblin];
 
     const races = ['Human', 'Elven', 'Orc', 'Dragon', 'Dwarf', 'Undead', 'Troll', 'Night Elf',
         'Draenei', 'Worgen', 'Pandaren', 'Tauren', 'Blood Elf', 'Goblin'];
     user.race = races[random(0, races.length - 1)];
+
+    if(user.race == 'Human'){
+        user.iconRace = iconR[human];
+    }else if(user.race == 'Elven'){
+        user.iconRace = iconR[elf];
+    }else if(user.race == 'Orc'){
+        user.iconRace = iconR[orc];
+    }else if(user.race == 'Dragon'){
+        user.iconRace = iconR[dragon];
+    }else if(user.race == 'Dwarf'){
+        user.iconRace = iconR[dwarf];
+    }else if(user.race == 'Undead'){
+        user.iconRace = iconR[undead];
+    }else if(user.race == 'Troll'){
+        user.iconRace = iconR[troll];
+    }else if(user.race == 'Night Elf'){
+        user.iconRace = iconR[nightElf];
+    }else if(user.race == 'Draenei'){
+        user.iconRace = iconR[draenei];
+    }else if(user.race == 'Worgen'){
+        user.iconRace = iconR[worgen];
+    }else if(user.race == 'Pandaren'){
+        user.iconRace = iconR[pandaren];
+    }else if(user.race == 'Tauren'){
+        user.iconRace = iconR[tauren];
+    }else if(user.race == 'Blood Elf'){
+        user.iconRace = iconR[bloodElf];
+    }else if(user.race == 'Goblin'){
+        user.iconRace = iconR[goblin];
+    }
 
     //TODO MODEL
     //Сгенерировать класс
@@ -59,7 +105,7 @@ function onClickDeleteAll(){
 }
 
 //TODO VIEW
-function renderUser({ name, ava, hp, mp, race, clas, lvl, uid}) {
+function renderUser({ name, ava, hp, mp, race, iconRace, clas, lvl, uid}) {
     const delClass = `btn-del-${uid}`;
 
     const heroHtml = `
@@ -76,7 +122,7 @@ function renderUser({ name, ava, hp, mp, race, clas, lvl, uid}) {
             <h5 class="card-title">${name}</h5>
              
                <div class="col-md-4"><div class="float-left">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRoOJ3wiMGoC1y2NQPkKRCKFcyMD1qrK0n7g&usqp=CAU" 
+                <img src="${ iconRace }" 
                 class="card-img" alt="icon">
                 </div>
            </div>
@@ -87,7 +133,7 @@ function renderUser({ name, ava, hp, mp, race, clas, lvl, uid}) {
             </div>
             
             <div class="col-md-4"><div class="float-left">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRoOJ3wiMGoC1y2NQPkKRCKFcyMD1qrK0n7g&usqp=CAU" 
+                <img src="" 
                 class="card-img" alt="icon">
                 </div>
            </div>
