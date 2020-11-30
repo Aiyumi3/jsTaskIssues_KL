@@ -30,10 +30,6 @@ function onClickGenerate(){
 
     //TODO MODEL
     //Сгенерировать расу
-    const iconShape = '<svg height=30 width="30" style="background-color: floralwhite; margin-left: 10px; ' +
-        'box-shadow: 1px 1px  2px 2px mediumpurple; border-radius: 3px; " id="svg"> ' +
-        '<circle id="circ" r="15" cx="15" cy="10" style="fill: ; stroke: darkgray; stroke-width: 2px" /> </svg>';
-    user.iconShape.style.fill = '#' + Math.random().toString(16).slice(2, 8);
     //const iconR = [human, elf, orc, dragon, dwarf, undead, troll, nightElf, draenei, worgen, pandaren, tauren, bloodElf, goblin];
 
     const races = ['Human', 'Elven', 'Orc', 'Dragon', 'Dwarf', 'Undead', 'Troll', 'Night Elf',
@@ -63,7 +59,7 @@ function onClickDeleteAll(){
 }
 
 //TODO VIEW
-function renderUser({ name, ava, hp, mp, race, clas, lvl, uid, iconShape }) {
+function renderUser({ name, ava, hp, mp, race, clas, lvl, uid}) {
     const delClass = `btn-del-${uid}`;
 
     const heroHtml = `
@@ -78,13 +74,24 @@ function renderUser({ name, ava, hp, mp, race, clas, lvl, uid, iconShape }) {
         <img src="${ava}" class="card-img-top" alt="hero avatar">
         <div class="card-body">
             <h5 class="card-title">${name}</h5>
-           
-            <p class="card-text"><span> ${iconShape} </span> ${race}</p>
+             
+               <div class="col-md-4"><div class="float-left">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRoOJ3wiMGoC1y2NQPkKRCKFcyMD1qrK0n7g&usqp=CAU" 
+                class="card-img" alt="icon">
+                </div>
+           </div>
+            <p class="card-text">   ${race}</p>
             <div class="float-right">
                 <span style="background-color: #eeffcd; color: purple; border-color: #f34c8a; 
                 border-radius: 10px;" class="card-text p-2">LVL ${lvl}</span>
             </div>
-            <p class="card-text"><span> ${iconShape} </span> ${clas}</p>
+            
+            <div class="col-md-4"><div class="float-left">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRoOJ3wiMGoC1y2NQPkKRCKFcyMD1qrK0n7g&usqp=CAU" 
+                class="card-img" alt="icon">
+                </div>
+           </div>
+            <p class="card-text">${clas}</p>
             <div>
                 <button type="button" class="btn btn-warning ${delClass}" data-uid="${uid}">Delete</button>
             </div>
