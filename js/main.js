@@ -74,12 +74,12 @@ function renderUser({ name, ava, hp, mp, race, clas, lvl, uid, icon }){
         <div class="card-body">
             <h5 class="card-title">${ name }</h5>
             
-            <p class="card-text">${ icon }  ${ race }</p>
+            <p class="card-text"><img src="${ icon }" class="card-img-left" alt="icon race">  ${ race }</p>
             <div class="float-right">
                 <span style="background-color: #eeffcd; color: purple; border-color: #f34c8a; 
                 border-radius: 10px;" class="card-text p-2">LVL ${lvl}</span>
             </div>
-            <p class="card-text">${ icon }  ${ clas }</p>
+            <p class="card-text"><img src="${ icon }" class="card-img-left" alt="icon class">  ${ clas }</p>
             <div>
                 <button type="button" class="btn btn-warning ${ delClass }" data-uid="${ uid }">Delete</button>
             </div>
