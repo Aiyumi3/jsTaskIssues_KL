@@ -48,7 +48,9 @@ function onClickGenerate(){
 
     const iconR = [user.human, user.elf, user.orc, user.dragon, user.dwarf, user.undead,
         user.troll, user.nightElf, user.draenei, user.worgen, user.pandaren, user.tauren, user.bloodElf, user.goblin];
-
+    const races = ['Human', 'Elven', 'Orc', 'Dragon', 'Dwarf', 'Undead', 'Troll', 'Night Elf',
+        'Draenei', 'Worgen', 'Pandaren', 'Tauren', 'Blood Elf', 'Goblin'];
+    user.race = races[random(0, races.length - 1)];
     switch (user.race) {
         case 'Human' :
             user.icon = iconR[0];
@@ -93,9 +95,7 @@ function onClickGenerate(){
             user.icon = iconR[13];
             break;
     }
-    const races = ['Human', 'Elven', 'Orc', 'Dragon', 'Dwarf', 'Undead', 'Troll', 'Night Elf',
-        'Draenei', 'Worgen', 'Pandaren', 'Tauren', 'Blood Elf', 'Goblin'];
-    user.race = races[random(0, races.length - 1)];
+
 
     //TODO MODEL
     //Сгенерировать класс
