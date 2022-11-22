@@ -138,7 +138,7 @@ function renderUser({ name, ava, uid}) {/*, hp, mp, race, icon, clas, lvl, */
     <div class="col mb-4">
     <div class="card h-100">
        
-        <img src="${ava}" class="card-img-top" alt="avatar" style="    border-radius: 1000px; filter: blur(3px);">
+        <img src="${ava}" class="card-img-top" alt="avatar" style="    border-radius: 1000px; filter: blur(1px);height: 50%">
         <div class="card-body">
             <h5 class="card-title">${name}</h5>      
          </div>
