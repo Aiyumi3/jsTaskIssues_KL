@@ -19,7 +19,7 @@ function onClickGenerate(){
     //TODO MODEL
     const avaN = random(0, 9);
     //const avaG = gender == 'female' ? 'women' : 'men';
-    val rN = 0;
+    let rN = 0;
     user.ava = `https://random.imagecdn.app/200/200?random={rN+=1}`;//https://randomuser.me/api/portraits/${ avaG }/${avaN}.jpg
 
     //TODO MODEL
