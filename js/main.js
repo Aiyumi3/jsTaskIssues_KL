@@ -17,10 +17,9 @@ function onClickGenerate(){
     //https://randomuser.me/api/portraits/men/77.jpg
     //сгенерировать ссылку на аватар
     //TODO MODEL
-    const avaN = random(0, 9);
+    //const avaN = random(0, 9);
     //const avaG = gender == 'female' ? 'women' : 'men';
-    let rN = 0;
-    user.ava = `https://random.imagecdn.app/200/200?random={rN+=1}`;//https://randomuser.me/api/portraits/${ avaG }/${avaN}.jpg
+    user.ava = `https://random.imagecdn.app/200/200`;//https://randomuser.me/api/portraits/${ avaG }/${avaN}.jpg
 
     //TODO MODEL
     //сгенерировать ХП и МП
@@ -143,7 +142,7 @@ function renderUser({ name, ava, uid}) {/*, hp, mp, race, icon, clas, lvl, */
            </div>-->
             
             <div>
-                <button type="button" class="btn btn-warning ${delClass}" data-uid="${uid}">Delete</button>
+                <button type="button" class="btn btn-warning ${delClass}" data-uid="${uid}" style="border-radius: 100px;"> ⨉ </button>
             </div>
         </div>
     </div>
