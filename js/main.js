@@ -6,7 +6,7 @@ document.querySelector('#btn-delete-all').addEventListener('click', onClickDelet
 function onClickGenerate(){
     //считать имя
     //если имени нет - предупредить пользователя о том, что он не ввел имя и выйти
-    const { isError, name, gender } = inputAndCheckName();
+    const { isError, name } = inputAndCheckName();
     if(isError){
         return;
     }
