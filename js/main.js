@@ -171,13 +171,12 @@ function inputAndCheckName(){
     //TODO VIEW
     const inpName = document.querySelector('#inp-name');
     const inpNameNot = document.querySelector('#inp-name-notify');
-    const inpGender = [...document.querySelectorAll('.inp-gender')];
+  
 
     //TODO MODEL
     const answ = {
         isError : false,
-        name : inpName.value,
-        gender : inpGender.find(el => el.checked).value
+        name : inpName.value
     };
 
     //TODO VIEW
