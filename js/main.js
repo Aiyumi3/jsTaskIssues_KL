@@ -17,9 +17,10 @@ function onClickGenerate(){
     //https://randomuser.me/api/portraits/men/77.jpg
     //сгенерировать ссылку на аватар
     //TODO MODEL
-    //const avaN = random(0, 99);
+    const avaN = random(0, 9);
     //const avaG = gender == 'female' ? 'women' : 'men';
-    user.ava = `https://random.imagecdn.app/200/200`;//https://randomuser.me/api/portraits/${ avaG }/${ avaN }.jpg
+    val rN = 0;
+    user.ava = `https://random.imagecdn.app/200/200?random={rN+=1}`;//https://randomuser.me/api/portraits/${ avaG }/${avaN}.jpg
 
     //TODO MODEL
     //сгенерировать ХП и МП
