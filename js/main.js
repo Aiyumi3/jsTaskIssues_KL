@@ -17,9 +17,19 @@ function onClickGenerate(){
     //https://randomuser.me/api/portraits/men/77.jpg
     //сгенерировать ссылку на аватар
     //TODO MODEL
-    //const avaN = random(0, 9);
+    //const avaN = random(0, 7);
     //const avaG = gender == 'female' ? 'women' : 'men';
-    user.ava = `https://random.imagecdn.app/200/200`;//https://randomuser.me/api/portraits/${ avaG }/${avaN}.jpg
+    const arrPic = ['https://i.pinimg.com/564x/f6/c9/f1/f6c9f1e3b45625de5728f3b168221b7c.jpg',
+                   'https://i.pinimg.com/564x/5c/ab/65/5cab6555d1d72e00353b5e89247ccb05.jpg',
+                   'https://i.pinimg.com/564x/f0/d0/1b/f0d01bebb64fd175b0a2ede96dff2d62.jpg',
+                   'https://i.pinimg.com/564x/e1/ca/b8/e1cab87516f3c46ad8d71a09aa476342.jpg',
+                   'https://i.pinimg.com/564x/9c/72/89/9c728908273bc98ad2b6c0da20b57b78.jpg',
+                   'https://i.pinimg.com/564x/19/c6/20/19c620d672837b79d918a3c6e3ff8b3e.jpg',
+                   'https://i.pinimg.com/564x/14/e9/80/14e98054d979e79b884e7c51d330284d.jpg',
+                   'https://i.pinimg.com/564x/17/28/38/172838055bab845a9f07107cf8bbdfd2.jpg'];
+    //arrPic.sort(() => 0.5 - Math.random());
+    
+    user.ava = arrPic[random(0, arrPic.length - 1)];//`https://random.imagecdn.app/200/200`;//https://randomuser.me/api/portraits/${ avaG }/${avaN}.jpg
 
     //TODO MODEL
     //сгенерировать ХП и МП
@@ -128,7 +138,7 @@ function renderUser({ name, ava, uid}) {/*, hp, mp, race, icon, clas, lvl, */
     <div class="col mb-4">
     <div class="card h-100">
        
-        <img src="${ava}" class="card-img-top" alt="avatar" style="    border-radius: 1000px; filter: blur(1.5rem);">
+        <img src="${ava}" class="card-img-top" alt="avatar" style="    border-radius: 1000px; filter: blur(3px);">
         <div class="card-body">
             <h5 class="card-title">${name}</h5>      
          </div>
@@ -195,8 +205,8 @@ function inputAndCheckName(){
 }
 
 //TODO MODEL
-function random(from = 1, to = 100){
-    return Math.floor(Math.random() * (to - from + 1) + from);
+function random(min, max){
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 //TODO MODEL
