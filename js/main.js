@@ -19,19 +19,19 @@ function onClickGenerate(){
     //TODO MODEL
     const avaN = random(0, 99);
     const avaG = gender == 'female' ? 'women' : 'men';
-    user.ava = `https://randomuser.me/api/portraits/${ avaG }/${ avaN }.jpg`;
+    user.ava = `https://random.imagecdn.app/200/200`;//https://randomuser.me/api/portraits/${ avaG }/${ avaN }.jpg
 
     //TODO MODEL
     //сгенерировать ХП и МП
-    user.hp = random(1, 100);
-    user.mp = random(1, 100);
-    user.lvl = random(1, 10);
+    //user.hp = random(1, 100);
+    //user.mp = random(1, 100);
+    //user.lvl = random(1, 10);
     user.uid = generateUID();
 
     //TODO MODEL
     //Сгенерировать расу
 
-    user.human = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRoOJ3wiMGoC1y2NQPkKRCKFcyMD1qrK0n7g&usqp=CAU';
+    /*user.human = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRoOJ3wiMGoC1y2NQPkKRCKFcyMD1qrK0n7g&usqp=CAU';
     user.elf = 'https://i.etsystatic.com/9879972/r/il/494959/1531730199/il_570xN.1531730199_8ero.jpg';
     user.orc = 'https://cdn.dribbble.com/users/2043038/screenshots/4708721/orc.png';
     user.dragon = 'https://media.istockphoto.com/vectors/dragon-icon-with-fire-symbol-vector-id1191986285?b=1&k=6&m=1191986285&s=612x612&w=0&h=XGvPRd8BjmkRgv4eQUFq4tHNoMYReL9tm8qEf7nUoxA=';
@@ -95,13 +95,13 @@ function onClickGenerate(){
             user.icon = iconR[13];
             break;
     }
-
+*/
 
     //TODO MODEL
     //Сгенерировать класс
-    const classes = ['Warrior', 'Mage', 'Warlock', 'Knight', 'Druid', 'Monk', 'Prophet', 'Hunter',
+   /* const classes = ['Warrior', 'Mage', 'Warlock', 'Knight', 'Druid', 'Monk', 'Prophet', 'Hunter',
         'Rogue', 'Paladin', 'Shaman', 'Priest', 'Death Knight', 'Demon Hunter'];
-    user.clas = classes[random(0, classes.length - 1)];
+    user.clas = classes[random(0, classes.length - 1)];*/
 
     //Сформировать HTML и вставить в контейнер(body)
     //TODO MODEL
@@ -121,39 +121,26 @@ function onClickDeleteAll(){
 }
 
 //TODO VIEW
-function renderUser({ name, ava, hp, mp, race, icon, clas, lvl, uid}) {
+function renderUser({ name, ava, uid}) {/*, hp, mp, race, icon, clas, lvl, */
     const delClass = `btn-del-${uid}`;
 
-    const heroHtml = `
+    const userHtml = `
     <div class="col mb-4">
     <div class="card h-100">
-        <div class="progress">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: ${hp}%" aria-valuenow="${hp}" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <div class="progress">
-            <div class="progress-bar bg-info" role="progressbar" style="width: ${mp}%" aria-valuenow="${mp}" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <img src="${ava}" class="card-img-top" alt="hero avatar">
+       
+        <img src="${ava}" class="card-img-top" alt="avatar">
         <div class="card-body">
-            <h5 class="card-title">${name}</h5>
-             
-               <div class="col-md-4"><div class="float-left">
-                <img src="${icon}" 
-                class="card-img" alt="icon">
-                </div>
-           </div>
-            <p class="card-text">   ${race}</p>
-            <div class="float-right">
-                <span style="background-color: #eeffcd; color: purple; border-color: #f34c8a; 
-                border-radius: 10px;" class="card-text p-2">LVL ${lvl}</span>
-            </div>
+            <h5 class="card-title">${name}</h5>      
+         </div>
+           
+            
             <!--
             <div class="col-md-4"><div class="float-left">
                 <img src="" 
                 class="card-img" alt="icon">
                 </div>
            </div>-->
-            <p class="card-text">${clas}</p>
+            
             <div>
                 <button type="button" class="btn btn-warning ${delClass}" data-uid="${uid}">Delete</button>
             </div>
@@ -201,7 +188,7 @@ function inputAndCheckName(){
     const regName = /\W/g;
     if(answ.name.length == 0 || answ.name.match(regName)){
         //TODO VIEW
-        inpNameNot.innerText = 'ENTER A HERO NAME(!!WITHOUT NON-WORD CHARACTERS!!)!';
+        inpNameNot.innerText = 'ENTER A NAME(!!WITHOUT NON-WORD CHARACTERS!!)!';
         answ.isError = true;
     }
 
