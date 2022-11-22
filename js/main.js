@@ -17,8 +17,8 @@ function onClickGenerate(){
     //https://randomuser.me/api/portraits/men/77.jpg
     //сгенерировать ссылку на аватар
     //TODO MODEL
-    const avaN = random(0, 99);
-    const avaG = gender == 'female' ? 'women' : 'men';
+    //const avaN = random(0, 99);
+    //const avaG = gender == 'female' ? 'women' : 'men';
     user.ava = `https://random.imagecdn.app/200/200`;//https://randomuser.me/api/portraits/${ avaG }/${ avaN }.jpg
 
     //TODO MODEL
@@ -148,7 +148,7 @@ function renderUser({ name, ava, uid}) {/*, hp, mp, race, icon, clas, lvl, */
     </div>
     </div>`;
 
-    document.querySelector('#hero-container').insertAdjacentHTML('afterbegin', heroHtml);
+    document.querySelector('#hero-container').insertAdjacentHTML('afterbegin', userHtml);
 
     document.querySelector(`.${delClass}`).addEventListener('click', deleteUser);
 }//TODO CONTROLLER
